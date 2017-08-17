@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+    <table>
+        <tr bgcolor="#b1b1b1">
+            <th>Symbol</th>
+            <th>Name</th>
+            <th>Shares</th>
+            <th>Price</th>
+            <th>Total</th>
+        </tr>
+        {% for stock in stocks %}
+        <tr>
+            <td>{{stock.symbol}}</td>
+            <td>{{stock.name}}</td>
+            <td>{{stock.shares}}</td>
+            <td>${{stock.price}}</td>
+            <td>${{(stock.price*stock.shares)|round(2)}}</td>
+        </tr>
+        {% endfor %}
+        <tr bgcolor="#d5d5d5">
+            <td colspan="4">Cash</td>
+            <td>${{cash|round(2)}}</td>
+        </tr>
+        <tr>
+            <td colspan="4"></td>
+            <td>${{total|round(2)}}</td>
+        </tr>
+    </table>
+{% endblock %}
